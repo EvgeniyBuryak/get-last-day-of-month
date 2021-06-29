@@ -8,10 +8,8 @@ function getLastDayOfMonth(year, month) {
         if (year % 4 == 0) return "29 (высокосный год, февраль)";
         return "28 (невысокосный год, февраль)";
     }
-
-    date.setDate(date.getDate() + 1);
     
-    return (date.getMonth() == month) ? 31 : 30;
+    return ((date.getDate() + 1) == month) ? 31 : 30;
 }
 
 alert(getLastDayOfMonth(2007, 1));
