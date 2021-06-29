@@ -2,13 +2,17 @@ function getLastDayOfMonth(year, month) {
 
     let date = new Date(year, month);    
 
-    do {
-        date.setDate(date.getDate() + 1);
-    } while (date.getMonth() == month)
+    date.setDate(date.getDate() + 29);
 
-    date.setDate(date.getDate() - 1);
+    if (!(date.getMonth() == month)) {
+        if (year % 4 == 0) return "29 (высокосный год, февраль)";
+        return "28 (невысокосный год, февраль)";
+    }
 
-    return date.getDate();
+    date.setDate(date.getDate() + 1);
+    
+    return (date.getMonth() == month) ? 31 : 30;
 }
 
-alert(getLastDayOfMonth(2012, 1));
+alert(getLastDayOfMonth(2007, 1));
+alert(new Date(2007, 1, 28));
